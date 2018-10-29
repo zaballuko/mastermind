@@ -7,25 +7,13 @@ use Illuminate\Http\Request;
 class MastermindController extends Controller
 {
     function mostarJuego(Request $request){
-    	return view("juegoMastermind",[
-            'nombre' => $request->input("nombre"),
-            'longitud' => $request->input("longitud"),
-            'ballsPosibles' => $request->input("ballsPosibles"),
-            'repetidos' => $request->input("repetidos"),
-            'intentos' => $request->select("intentos")
-    	]);
+        /* return $request->all(); */
+        $request->session()->put('nombre', $request->input("nombre"));
+        $request->session()->put('longitud', $request->input("longitud"));
+        $request->session()->put('ballsPosibles', $request->input("ballsPosibles"));
+        $request->session()->put('repetidos', $request->input("repetidos"));
+        $request->session()->put('intentos', $request->input("intentos"));
+        return view ("juegoMastermind");
     }
-    function jugar(Request $request){
-        
-
-
-    	return view("juegoMastermind",[
-            'nombre' => $request->input("nombre"),
-            'longitud' => $request->input("longitud"),
-            'ballsPosibles' => $request->input("ballsPosibles"),
-            'repetidos' => $request->input("repetidos"),
-            'intentos' => $request->select("intentos"),
-            'balls' => $request->select("balls"),
-    	]);
-    }
+    
 }

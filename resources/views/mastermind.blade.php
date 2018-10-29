@@ -7,14 +7,14 @@
 	<div class="content">
 	<h1>Bienvenido/a al Mastermind!</h1>
     <div class="container">
-        1<a href=""><img src="img/1pokeball.png" name="1"></a>
-        2<a href=""><img src="img/2superball.png" name="2"></a>
-        3<a href=""><img src="img/3ultraball.png" name="3"></a>
-        4<a href=""><img src="img/4safariball.png" name="4"></a><br>
-        5<a href=""><img src="img/5rapidball.png" name="5"></a>
-        6<a href=""><img src="img/6aquaball.png" name="6"></a>
-        7<a href=""><img src="img/7heartball.png" name="7"></a>
-        8<a href=""><img src="img/8masterball.png" name="8"></a>
+        1<a href=""><img src="img/1.png" name="1"></a>
+        2<a href=""><img src="img/2.png" name="2"></a>
+        3<a href=""><img src="img/3.png" name="3"></a>
+        4<a href=""><img src="img/4.png" name="4"></a><br>
+        5<a href=""><img src="img/5.png" name="5"></a>
+        6<a href=""><img src="img/6.png" name="6"></a>
+        7<a href=""><img src="img/7.png" name="7"></a>
+        8<a href=""><img src="img/8.png" name="8"></a>
     
 	<form action="/inicio" method="post">
 			@csrf
