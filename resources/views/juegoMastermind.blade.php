@@ -25,19 +25,19 @@
                     </select>
             @endfor
             <br>
-			<button type="submit"  class="btn btn-success" name=comprobar>Comprobar</button>
+			<button type="submit"  class="btn btn-success" name=comprobar>Jugar</button>
 		</form>
         <br>
         <h3>Jugador/a  <code>{{session()->get('nombre')}}</code></h3>
+        <!-- {{var_dump((session()->get('claveSecreta')))}} -->
+        @for($i=0;$i<count(session()->get('claveSecreta'));$i++)
+
+            <p>{{(session()->get('claveSecreta'))[$i]}}</p>
+        
+        @endfor
         <hr>
         </div>
-        <p>Intento:
-        </p><p> / {{session()->get('intentos')}}</p>
-        <p>
-        @for($i=0;$i<session()->get('claveSecreta');$i++){
-            echo session()->get('claveSecreta')[$i];
-        }
-        @endfor
-        </p>
+        <p>Intento:</p>
+        <p> / {{session()->get('intentos')}}</p>
 	</div>
 @endsection
