@@ -11,15 +11,22 @@
 	<form action="/jugar" method="post">      
 			@csrf
             <br>
-             <!-- @for($i=0;$i<=session()->get('longitud');$i++){
-                <a><img src="img/ {{$clave=session()->get('clave')}} .png"></a>
-             }
-             @endfor  -->  
+            <p>clave introducida:
+            <br>
+            @if(session()->get('arrayClaveIntroducida') == null)
+             es la primera partida
+            @else
+            @for($i=0; $i<count(session()->get('arrayClaveIntroducida')); $i++)
+            {{(session()->get('arrayClaveIntroducida'))[$i]}}
+            <a><img src="img/ {{(session()->get('arrayClaveIntroducida'))[$i]}}.png"></a>
+            @endfor
+            @endif </p>
+               
             <br>
             <label>Introduce el codigo:</label>
             @for ($i=0; $i<session()->get('longitud'); $i++)
                 <select name="selectClave{{$i}}">
-                    @for ($j=0; $j<session()->get('ballsPosibles')+1; $j++)
+                    @for ($j=1; $j<session()->get('ballsPosibles')+1; $j++)
                     <option value="{{$j}}">{{$j}}</option>
                     @endfor
                     </select>
@@ -29,12 +36,15 @@
 		</form>
         <br>
         <h3>Jugador/a  <code>{{session()->get('nombre')}}</code></h3>
-        <!-- {{var_dump((session()->get('claveSecreta')))}} -->
+        
+        <p>clave secreta 
         @for($i=0;$i<count(session()->get('claveSecreta'));$i++)
 
-            <p>{{(session()->get('claveSecreta'))[$i]}}</p>
+            {{(session()->get('claveSecreta'))[$i]}}
         
         @endfor
+        </p>
+        
         <hr>
         </div>
         <p>Intento:</p>
