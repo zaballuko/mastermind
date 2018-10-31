@@ -21,7 +21,10 @@
             <a><img src="img/{{(session()->get('arrayClaveIntroducida'))[$i]}}.png"></a>
             @endfor
             @endif </p>
-               
+
+            <p>Aciertos:</p>
+            <p>Candidatos:</p>
+
             <br>
             <label>Introduce el codigo:</label>
             @for ($i=0; $i<session()->get('longitud'); $i++)
