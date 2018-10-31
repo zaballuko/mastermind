@@ -21,7 +21,7 @@ class MastermindController extends Controller
         $longitud = $request->session()->get('longitud', $request->input("longitud"));
         $ballsPosibles = $request->session()->get('ballsPosibles', $request->input("ballsPosibles"));
         $claveSecreta = array();
-        for ($i=0; $i <= $longitud; $i++) { 
+        for ($i=0; $i <= $longitud-1; $i++) { 
             $numAleatorio = rand(1,$ballsPosibles);
             array_push($claveSecreta,$numAleatorio);
         }

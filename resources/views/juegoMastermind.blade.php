@@ -18,7 +18,7 @@
             @else
             @for($i=0; $i<count(session()->get('arrayClaveIntroducida')); $i++)
             {{(session()->get('arrayClaveIntroducida'))[$i]}}
-            <a><img src="img/ {{(session()->get('arrayClaveIntroducida'))[$i]}}.png"></a>
+            <a><img src="img/{{(session()->get('arrayClaveIntroducida'))[$i]}}.png"></a>
             @endfor
             @endif </p>
                
