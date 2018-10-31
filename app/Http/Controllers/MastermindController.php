@@ -14,7 +14,7 @@ class MastermindController extends Controller
         $request->session()->put('ballsPosibles', $request->input("ballsPosibles"));
         $request->session()->put('repetidos', $request->input("repetidos"));
         $request->session()->put('intentos', $request->input("intentos"));
-        $request->session()->put('arrayClaveIntroducida', null);
+        $request->session()->put('arrayClaveIntroducidas', array());
 
         
         /* //generar array de clave secreta */
@@ -38,10 +38,12 @@ class MastermindController extends Controller
 
             /* tantos select como intentos*/
             $longitud = $request->session()->get('longitud', $request->input("longitud"));
+            
             for ($i=0; $i < $longitud; $i++) { 
                 $arrayClaveIntroducida[$i] = $request->session()->get('selectClave'.$i, $request->input("selectClave".$i));
             }
-            $request->session()->put('arrayClaveIntroducida', $arrayClaveIntroducida);
+
+            $request->session()->push('arrayClaveIntroducidas', $arrayClaveIntroducida);
 
             /* $request->session()->get('claveSecreta', $claveSecreta);
             

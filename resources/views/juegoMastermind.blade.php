@@ -13,17 +13,22 @@
             <br>
             <p>clave introducida:
             <br>
-            @if(session()->get('arrayClaveIntroducida') == null)
+            <br>
+            @if(session()->get('arrayClaveIntroducidas') == null)
              es la primera partida
             @else
-            @for($i=0; $i<count(session()->get('arrayClaveIntroducida')); $i++)
-            {{(session()->get('arrayClaveIntroducida'))[$i]}}
-            <a><img src="img/{{(session()->get('arrayClaveIntroducida'))[$i]}}.png"></a>
+            @for($i=0; $i<count(session()->get('arrayClaveIntroducidas')); $i++)
+            
+            @for($j=0; $j<count(session()->get('arrayClaveIntroducidas')[$i]); $j++)
+
+                {{ (session()->get('arrayClaveIntroducidas'))[$i][$j] }}
+
+                <a><img src="img/{{(session()->get('arrayClaveIntroducidas'))[$i][$j]}}.png"></a>
+            @endfor Aciertos: Candidatos:
+            <br>
+            <br>
             @endfor
             @endif </p>
-
-            <p>Aciertos:</p>
-            <p>Candidatos:</p>
 
             <br>
             <label>Introduce el codigo:</label>
@@ -44,6 +49,7 @@
         @for($i=0;$i<count(session()->get('claveSecreta'));$i++)
 
             {{(session()->get('claveSecreta'))[$i]}}
+            <a><img src="img/{{(session()->get('claveSecreta'))[$i]}}.png"></a>
         
         @endfor
         </p>
