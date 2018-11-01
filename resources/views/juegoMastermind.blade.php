@@ -17,23 +17,22 @@
             @if(session()->get('arrayClaveIntroducidas') == null)
              es la primera partida
             @else
+                @for($i=0; $i<count(session()->get('arrayClaveIntroducidas')); $i++)
+                    @for($j=0; $j<session()->get('longitud'); $j++)
+                        {{ (session()->get('arrayClaveIntroducidas'))[$i][$j] }}
+                        <a><img src="img/{{(session()->get('arrayClaveIntroducidas'))[$i][$j]}}.png"></a>
+                    @endfor
 
-            @for($i=0; $i<count(session()->get('arrayClaveIntroducidas')); $i++)
-            
-            @for($j=0; $j<session()->get('longitud'); $j++)
-
-                {{ (session()->get('arrayClaveIntroducidas'))[$i][$j] }}
-
-                <a><img src="img/{{(session()->get('arrayClaveIntroducidas'))[$i][$j]}}.png"></a>
-            @endfor
-            Aciertos y Candidatos
-            <!-- {{ (session()->get('arrayClaveIntroducidas'))[$i][$j] }} -->
-            <br>
-            <br>
-            @endfor
-
-           
-            @endif </p>
+                    <!-- Aciertos:
+                    @for($k=0; $k<count(session()->get('arrayClaveIntroducida')); $k++)
+                        {{(session()->get('arrayClaveIntroducidas'))[$i][count(session()->get('arrayClaveIntroducidas'))-1]}}
+                    Candidatos:
+                        {{(session()->get('arrayClaveIntroducidas'))[$i][count(session()->get('arrayClaveIntroducidas'))-2]}}
+                    @enfor -->
+                <br><br>
+                @endfor
+            @endif
+            </p>
 
             <br>
             <label>Introduce el codigo:</label>
@@ -46,8 +45,8 @@
             @endfor
             <br>
 			<button type="submit"  class="btn btn-success" name=comprobar>Jugar</button>
-		</form>
-        <br>
+	</form>
+    <br>
         <h3>Jugador/a  <code>{{session()->get('nombre')}}</code></h3>
         
         <p>clave secreta 
