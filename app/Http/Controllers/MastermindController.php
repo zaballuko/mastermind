@@ -20,6 +20,7 @@ class MastermindController extends Controller
         /* //generar array de clave secreta */
         $longitud = $request->session()->get('longitud', $request->input("longitud"));
         $ballsPosibles = $request->session()->get('ballsPosibles', $request->input("ballsPosibles"));
+
         $claveSecreta = array();
         for ($i=0; $i <= $longitud-1; $i++) { 
             $numAleatorio = rand(1,$ballsPosibles);
@@ -40,21 +41,23 @@ class MastermindController extends Controller
             for ($i=0; $i < $longitud; $i++) { 
                 $arrayClaveIntroducida[$i] = $request->session()->get('selectClave'.$i, $request->input("selectClave".$i));
             }
-            $request->session()->push('arrayClaveIntroducidas', $arrayClaveIntroducida);
-
-
-            $request->session()->get('claveSecreta', $claveSecreta);
-            
+            $claveSecreta=$request->session()->get('claveSecreta');
+            $candidatos=0;
+            $aciertos=0;
             for ($i=0; $i < $longitud; $i++) { 
                 if(in_array($arrayClaveIntroducida[$i],$claveSecreta)){
                      
                     if(array_search($arrayClaveIntroducida[$i],$claveSecreta) == $i){
-                        array_push($arrayClaveIntroducida[$i++2],1);
+                        $candidatos++;
                     }else{
-                        array_push($arrayClaveIntroducida[$i++2],1);
+                        $aciertos++;
                     }       
                 }
-            } 
+            }
+            $arrayClaveIntroducida[]= $candidatos;
+            $arrayClaveIntroducida[]= $aciertos;
+
+            $request->session()->push('arrayClaveIntroducidas', $arrayClaveIntroducida);
             return view ("juegoMastermind");
         }
     
