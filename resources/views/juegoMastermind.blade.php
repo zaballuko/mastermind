@@ -23,12 +23,12 @@
                         <a><img src="img/{{(session()->get('arrayClaveIntroducidas'))[$i][$j]}}.png"></a>
                     @endfor
 
-                    <!-- Aciertos:
-                    @for($k=0; $k<count(session()->get('arrayClaveIntroducida')); $k++)
-                        {{(session()->get('arrayClaveIntroducidas'))[$i][count(session()->get('arrayClaveIntroducidas'))-1]}}
+                    Aciertos:
+                    @for($k=0; $k<count(session()->get('arrayClaveIntroducidas')[$i]); $k++)
+                        {{(session()->get('arrayClaveIntroducidas')[$i][session()->get('longitud')+2])}}
                     Candidatos:
-                        {{(session()->get('arrayClaveIntroducidas'))[$i][count(session()->get('arrayClaveIntroducidas'))-2]}}
-                    @enfor -->
+                    {{(session()->get('arrayClaveIntroducidas')[$i][session()->get('longitud')+1])}}
+                    @endfor
                 <br><br>
                 @endfor
             @endif
