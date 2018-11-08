@@ -54,10 +54,12 @@ class MastermindController extends Controller
                     }       
                 }
             }
-            $arrayClaveIntroducida[]= $candidatos;
-            $arrayClaveIntroducida[]= $aciertos;
-
-            $request->session()->push('arrayClaveIntroducidas', $arrayClaveIntroducida);
+            
+            $request->session()->push('arrayClaveIntroducidas', [
+                'claveIntro'=>$arrayClaveIntroducida,
+                'candidatos'=>$candidatos,
+                'aciertos'=>$aciertos
+            ]);
             return view ("juegoMastermind");
         }
     

@@ -17,20 +17,16 @@
             @if(session()->get('arrayClaveIntroducidas') == null)
              es la primera partida
             @else
-                @for($i=0; $i<count(session()->get('arrayClaveIntroducidas')); $i++)
-                    @for($j=0; $j<session()->get('longitud'); $j++)
-                        {{ (session()->get('arrayClaveIntroducidas'))[$i][$j] }}
-                        <a><img src="img/{{(session()->get('arrayClaveIntroducidas'))[$i][$j]}}.png"></a>
+        
+                @foreach( session()->get('arrayClaveIntroducidas') as $clave)
+                    @for($i=0; $i < count($clave['claveIntro']); $i++)
+                    <a><img src="img/{{$clave['claveIntro'][$i]}}.png"></a>
                     @endfor
-
-                    Aciertos:
-                    @for($k=0; $k<count(session()->get('arrayClaveIntroducidas')[$i]); $k++)
-                        {{(session()->get('arrayClaveIntroducidas')[$i][session()->get('longitud')+2])}}
-                    Candidatos:
-                    {{(session()->get('arrayClaveIntroducidas')[$i][session()->get('longitud')+1])}}
-                    @endfor
+                    Aciertos: {{$clave['aciertos']}}
+                    Candidatos: {{$clave['candidatos']}}
+                    <br>
+                @endforeach                    
                 <br><br>
-                @endfor
             @endif
             </p>
 
