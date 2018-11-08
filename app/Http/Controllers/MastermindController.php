@@ -14,6 +14,7 @@ class MastermindController extends Controller
         $request->session()->put('ballsPosibles', $request->input("ballsPosibles"));
         $request->session()->put('repetidos', $request->input("repetidos"));
         $request->session()->put('intentos', $request->input("intentos"));
+        $request->session()->put('numintentos', 0);
         $request->session()->put('arrayClaveIntroducidas', array());
 
         
@@ -35,6 +36,7 @@ class MastermindController extends Controller
 
 
         function jugar(Request $request){
+            if ($request->session()->get('numintentos')<$request->session()->get('intentos')) {
             /* recoger clave del select en array,comparar con claveSecreta */
             $longitud = $request->session()->get('longitud', $request->input("longitud"));
             
@@ -60,6 +62,13 @@ class MastermindController extends Controller
                 'candidatos'=>$candidatos,
                 'aciertos'=>$aciertos
             ]);
+            $numintentos=$request->session()->get('numintentos');
+            
+                $numintentos++;
+                $request->session()->put('numintentos', $numintentos);
+            }else{
+                $request->session()->put('claveSecreta', $claveSecreta);
+            }
             return view ("juegoMastermind");
         }
     

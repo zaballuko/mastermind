@@ -45,18 +45,20 @@
     <br>
         <h3>Jugador/a  <code>{{session()->get('nombre')}}</code></h3>
         
-        <p>clave secreta 
-        @for($i=0;$i<count(session()->get('claveSecreta'));$i++)
+        <p>clave secreta:
+        @if(session()->get('numintentos')== session()->get('intentos')) 
+                @for($i=0;$i<count(session()->get('claveSecreta'));$i++)
 
-            {{(session()->get('claveSecreta'))[$i]}}
-            <a><img src="img/{{(session()->get('claveSecreta'))[$i]}}.png"></a>
-        
-        @endfor
+                    {{(session()->get('claveSecreta'))[$i]}}
+                    <a><img src="img/{{(session()->get('claveSecreta'))[$i]}}.png"></a>
+                
+                @endfor
+        @endif
         </p>
         
         <hr>
         </div>
         <p>Intento:</p>
-        <p> / {{session()->get('intentos')}}</p>
+        <p>{{session()->get('numintentos')}} / {{session()->get('intentos')}}</p>
 	</div>
 @endsection
